@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feed Form Validation</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Feed Form</h2>
+    <form id="feedForm" onsubmit="return validateForm()">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <span class="error" id="nameError"></span>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <span class="error" id="emailError"></span>
+        </div>
+        <div>
+            <label for="website">Website:</label>
+            <input type="url" id="website" name="website" required>
+            <span class="error" id="websiteError"></span>
+        </div>
+        <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <span class="error" id="messageError"></span>
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <script>
+        function validateForm() {
+            clearErrors();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const website = document.getElementById('website').value;
+            const message = document.getElementById('message').value;
+
+            let isValid = true;
+
+            if (name === '') {
+                displayError('nameError', 'This field is required');
+                isValid = false;
+            }
+
+            if (email === '') {
+                displayError('emailError', 'This field is required');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                displayError('emailError', 'A valid email address is required');
+                isValid = false;
+            }
+
+            if (website === '') {
+                displayError('websiteError', 'This field is required');
+                isValid = false;
+            } else if (!isValidUrl(website)) {
+                displayError('websiteError', 'A valid URL is required');
+                isValid = false;
+            }
+
+            if (message === '') {
+                displayError('messageError', 'This field is required');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            return emailPattern.test(email);
+        }
+
+        function isValidUrl(url) {
+            const urlPattern = /^(https?:\/\/)?([\w\d.-]+\.[a-z]{2,})(\/[^\s]*)?$/i;
+            return urlPattern.test(url);
+        }
+
+        function displayError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+        }
+
+        function clearErrors() {
+            const errorElements = document.querySelectorAll('.error');
+            errorElements.forEach((element) => {
+                element.textContent = '';
+            });
+        }
+    </script>
+</body>
+</html>

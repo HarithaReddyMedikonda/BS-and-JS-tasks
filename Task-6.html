@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Form Validation</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS for red input boxes */
+        .form-control.is-invalid {
+            border-color: red;
+        }
+
+        /* Custom CSS for red Submit button */
+        .btn-red {
+            color: white;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Bootstrap Form Validation</h2>
+        <form>
+            <!-- Name Field -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control is-invalid" id="name" name="name" required>
+                <div class="invalid-feedback">
+                    Name is required.
+                </div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control is-invalid" id="email" name="email" required>
+                <div class="invalid-feedback">
+                    Email is required.
+                </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control is-invalid" id="password" name="password" required>
+                <div class="invalid-feedback">
+                    Password is required.
+                </div>
+            </div>
+
+            <!-- Hobbies Field -->
+            <div class="form-group">
+                <label for="hobbies">Hobbies</label>
+                <textarea class="form-control" id="hobbies" name="hobbies"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-red">Submit</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
